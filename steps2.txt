@@ -1,0 +1,36 @@
+1.	source openrc
+
+2.	sudo vgs 
+
+3.	sudo lvs
+
+4.	sudo losetup -l
+(snapshot)
+5.	openstack security group rule create --proto icmp default
+
+6.	openstack security group rule create --proto tcp --dst-port 22 default
+
+7.	openstack flavor list
+
+8.	openstack network list
+
+9.	openstack server create --flavor m1.tiny --image $(openstack image list | grep cirros | cut -f3 -d '|') --nic net-id=$(openstack network list | grep private | cut -f2 -d '|' | tr -d ' ') --security-group default vm
+
+10.	openstack server list ##to see the VM actually running
+
+11.	openstack console url show ##to see the aint to be used XXXXXXXXXXXXXXXXXXXXXXXX
+
+12.	openstack console url show vm
+copy the url
+could go to browser and login the VM
+
+13.	openstack floating ip create public
+remember the floating_ip_address as LJ
+
+14.	openstack server add floating ip vm LJ(from upside)
+
+15.	openstack server list
+
+16.	ping the VM
+
+17.	ssh cirros@LJ  ##enter the VM

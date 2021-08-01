@@ -1,0 +1,21 @@
+
+Basically I had to change permissions for two folder,
+sudo chown -R stack:stack /opt/devstack OR sudo chown -R stack:stack /opt/stack/devstack (acc to the setup on my machine)
+Consequently, while running the installation, the cache folder was having permissions issue so I ran the command again for that specific folder:
+
+sudo chown -R stack:stack /opt/stack/.cache
+
+install python
+
+
+source openrc
+openstack server start vm
+
+
+Devstack previously had a ./rejoin-stack.sh that allows to resume the state of your devstack.
+
+However, this patch removes that script.
+
+https://review.openstack.org/#/c/291453/
+
+Based on the description on that patch, the best way is to ./unstack.sh and ./clean.sh, then ./stack.sh again.

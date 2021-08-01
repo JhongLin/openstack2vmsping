@@ -1,0 +1,50 @@
+0.	sudo apt-get update
+	ip a ##check the ip and post ma
+
+1.	set net adapator2 to HOST-ONLY adapator
+
+2.	sudo apt-get install vim
+
+3.	sudo add-apt-repository ppa:deadsnakes/ppa
+	sudo apt-get update
+	sudo apt-get install python3.6
+	##sudo pip install --upgrade pip
+	
+4.	sudo apt-get install git
+
+5.	timedatectl  ##check whether the system time is correct
+
+6.	sudo useradd -s /bin/bash -d /opt/stack -m stack
+
+7.	sudo vim /etc/sudoers.d/stack
+stack ALL=(ALL) NOPASSWD: ALL
+
+8.	sudo su -l stack
+
+9.	sudo cat /etc/shadow  ##check 'stack' is at the bottom
+
+10.	git clone https://git.openstack.org/openstack-dev/devstack
+
+11.	pwd
+	cd devstack/
+	
+12.	vim local.conf
+[[local|localrc]]
+ADMIN_PASSWORD=p1
+DATABASE_PASSWORD=$ADMIN_PASSWORD
+RABBIT_PASSWORD=$ADMIN_PASSWORD
+SERVICE_PASSWORD=$ADMIN_PASSWORD
+HOST_IP=10.
+
+13.	sudo vim /etc/hosts
+##the second row ip modify to 10...
+
+14.	...set authorarity(give the stack the same autho. as root
+
+15. ./stack.sh
+
+16.	##source openrc
+
+17.	openstack image list
+
+18.	lsblk
